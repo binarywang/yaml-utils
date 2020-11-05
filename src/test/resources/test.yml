@@ -1,0 +1,14 @@
+single: single
+spring:
+  datasource:
+    username: username
+    password: "1234"
+wx:
+  mp:
+    configs:
+    - appid: '11'
+      appsecret: '123'
+    - appid: "22"
+      appsecret: "secret"
+      index: 1
+      b: true
