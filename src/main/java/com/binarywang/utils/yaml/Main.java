@@ -30,7 +30,8 @@ public class Main {
             case "read": {
                 final Object value = YamlUtils.readProperty(args[2], new FileInputStream(args[1]));
                 if (value == null) {
-                    log.error("没有在文件中找到该属性");
+                    log.error("没有在文件中找到该配置！");
+                    System.exit(-1);
                     break;
                 }
                 log.info(value.toString());
@@ -39,6 +40,7 @@ public class Main {
             case "add": {
                 if (args.length < 4) {
                     log.error("ADD时的参数个数不对！");
+                    System.exit(-1);
                     return;
                 }
 
@@ -54,7 +56,7 @@ public class Main {
 
                 final String result = YamlUtils.addProperty(args[2], value, new FileInputStream(file));
                 FileUtils.write(file, result, StandardCharsets.UTF_8);
-                log.info("新属性添加成功！");
+                log.info("新配置添加或更新完成！");
                 break;
             }
 
