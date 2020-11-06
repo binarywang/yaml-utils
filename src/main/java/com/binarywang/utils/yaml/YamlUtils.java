@@ -129,7 +129,7 @@ public class YamlUtils {
         }
 
         final String result = yaml.dumpAsMap(map);
-        log.info("增加新属性后的yaml完整字符串：\n{}", result);
+        // log.info("增加新属性后的yaml完整字符串：\n{}", result);
         return result;
     }
 
