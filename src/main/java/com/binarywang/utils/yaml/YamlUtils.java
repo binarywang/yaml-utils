@@ -108,20 +108,23 @@ public class YamlUtils {
                     int index = Integer.parseInt(StringUtils.substringAfter(k, "[").replace("]", ""));
                     final Map<String, Object> parent = (Map<String, Object>) current;
                     List<Object> list = (List<Object>) parent.get(listName);
-                    current = new LinkedHashMap<String, Object>(2);
                     if (list == null) {
                         // list 不存在
                         list = new ArrayList<>(index + 1);
+                        current = new LinkedHashMap<String, Object>(2);
                         list.add(current);
                         parent.put(listName, list);
                         continue;
-                    } else if (list.size() < index + 1) {
+                    }
+
+                    if (list.size() < index + 1) {
                         // 列表长度不够，仅增加一个，忽略可能差很多的情况
+                        current = new LinkedHashMap<String, Object>(2);
                         list.add(current);
                         continue;
                     }
 
-                    list.set(index, current);
+                    current = list.get(index);
                 } else {
                     current = ((Map<String, Object>) current).computeIfAbsent(k, k1 -> new LinkedHashMap<>(8));
                 }
