@@ -54,7 +54,7 @@ public class Main {
 
                 final String result = YamlUtils.addProperty(args[2], value, new FileInputStream(file));
                 FileUtils.write(file, result, StandardCharsets.UTF_8);
-                log.info("新属性添加成功！");
+                log.info("新属性添加或更新完成！");
                 break;
             }
 
